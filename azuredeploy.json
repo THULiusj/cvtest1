@@ -26,6 +26,9 @@
         }
     },
     "variables": {
+        "virtualMachineName": "[parameters('virtualMachineName')]",
+        "virtualMachineSize": "[parameters('virtualMachineSize')]",
+        "virtualNetworkName": "[parameters('virtualMachineName')]",
         "vnetId": "[resourceId('gputest','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[parameters('virtualMachineName')]",
@@ -37,9 +40,6 @@
         "publicIpAddressType": "Dynamic",
         "publicIpAddressName": "[parameters('virtualMachineName')]",
         "vmStorageAccountContainerName": "vhds",
-        "virtualMachineName": "[parameters('virtualMachineName')]",
-        "virtualMachineSize": "[parameters('virtualMachineSize')]",
-        "virtualNetworkName": "[parameters('virtualMachineName')]",
         "networkSecurityGroupName": "[concat(parameters('virtualMachineName'), '-nsg')]",
         "diagnosticsStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'diag768')]",
         "diagnosticsStorageAccountId": "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
