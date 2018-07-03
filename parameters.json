@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "virtualMachineName": {
+            "value": "gputest"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_NC6"
+        },
+        "adminUsername": {
+            "value": "jxm"
+        },
+        "virtualNetworkName": {
+            "value": "gputest-vnet"
+        },
+        "networkInterfaceName": {
+            "value": "gputest462"
+        },
+        "networkSecurityGroupName": {
+            "value": "gputest-nsg"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "storageAccountName": {
+            "value": "gputestdisks648"
+        },
+        "storageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "gputestdiag786"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/gputestdiag786"
+        },
+        "addressPrefix": {
+            "value": "10.0.0.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.0.0.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "gputest-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        }
+    }
+}
