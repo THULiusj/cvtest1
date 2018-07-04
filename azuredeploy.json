@@ -29,7 +29,7 @@
         "virtualNetworkName": "[parameters('virtualMachineName')]",
         "subnetName": "Subnet",
         "vnetId": "[resourceId('gputest','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "networkInterfaceName": "[parameters('virtualMachineName')]",
         "addressPrefix": "10.0.0.0/16",
         "subnetPrefix": "10.0.0.0/24",
