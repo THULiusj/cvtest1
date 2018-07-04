@@ -274,8 +274,8 @@
               "typeHandlerVersion": "2.0",
               "autoUpgradeMinorVersion": true,
               "settings": {
-                "fileUris": "[split(parameters('fileUris'), ' ')]",
-                "commandToExecute": "sh script.sh"
+                "fileUris": "https://raw.githubusercontent.com/Iamnvincible/jupyterconfig/master/config.sh",
+                "commandToExecute": "sh config.sh"
               }
             }
         }
