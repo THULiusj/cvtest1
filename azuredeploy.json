@@ -41,7 +41,8 @@
         "networkSecurityGroupName": "[concat(parameters('virtualMachineName'), '-nsg')]",
         "diagnosticsStorageAccountName": "[concat(resourceGroup().name, 'diag768')]",
         "diagnosticsStorageAccountId": "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
-        "diagnosticsStorageAccountType": "Standard_LRS"
+        "diagnosticsStorageAccountType": "Standard_LRS",
+        "extensionName": "CustomScript"
     },
     "resources": [
         {
@@ -240,8 +241,42 @@
                             "destinationAddressPrefix": "*",
                             "destinationPortRange": "22"
                         }
+                    },
+                    {
+                        "name": "JupyterNotebook",
+                        "properties": {
+                            "priority": 1040,
+                            "protocol": "TCP",
+                            "access": "Allow",
+                            "direction": "Inbound",
+                            "sourceApplicationSecurityGroups": [],
+                            "destinationApplicationSecurityGroups": [],
+                            "sourceAddressPrefix": "*",
+                            "sourcePortRange": "*",
+                            "destinationAddressPrefix": "*",
+                            "destinationPortRange": "9999"
+                        }
                     }
                 ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('virtualMachineName'),'/', variables('extensionName'))]",
+            "apiVersion": "2015-06-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+              "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+            ],
+            "properties": {
+              "publisher": "Microsoft.Azure.Extensions",
+              "type": "CustomScript",
+              "typeHandlerVersion": "2.0",
+              "autoUpgradeMinorVersion": true,
+              "settings": {
+                "fileUris": "[split(parameters('fileUris'), ' ')]",
+                "commandToExecute": "sh script.sh"
+              }
             }
         }
     ],
